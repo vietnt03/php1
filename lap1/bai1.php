@@ -1,8 +1,8 @@
 <?php
     $hoten = "Nguyễn Văn A";
     $masv = "SV001";
-    $nganh = "Khoa học máy tính";
-    $ngaysinh = "01/01/2000";
+    $nganh = "thiết kế web ";
+    $ngaysinh = "01/01/2003";
     
     echo "Họ tên: " . $hoten . "<br>";
     echo "Mã sinh viên: " . $masv . "<br>";
