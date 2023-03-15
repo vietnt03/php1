@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
     <h2>Kết quả:</h2>
     <p>Tên sản phẩm: <?php echo $productName ?></p>
-    <p>Giá: <?php echo number_format($price) ?> VNĐ</p>
+    <p>Giá: <?php echo ($price) ?> VNĐ</p>
     <p>Số lượng: <?php echo $quantity ?></p>
-    <p>Giảm giá: <?php echo number_format($discount) ?> VNĐ</p>
-    <p>Tổng tiền thanh toán: <?php echo number_format($totalPrice) ?> VNĐ</p>
+    <p>Giảm giá: <?php echo ($discount) ?> VNĐ</p>
+    <p>Tổng tiền thanh toán: <?php echo ($totalPrice) ?> VNĐ</p>
 <?php } ?>
 </body>
 </html>

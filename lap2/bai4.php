@@ -1,12 +1,10 @@
 <?php
-$numbers = array(2, 5, 8, 12, 15, 20, 25);
+$numbers = array(1,2,3,4,5);
 
-// Tìm số lớn nhất trong mảng
 $max_number = max($numbers);
 echo "Số lớn nhất trong mảng là: " . $max_number . "<br>";
 
-// Tính trung bình cộng các số trong mảng
-$total_numbers = count($numbers);
+$total_numbers = array_sum($numbers);
 $sum_numbers = 0;
 
 foreach ($numbers as $num) {

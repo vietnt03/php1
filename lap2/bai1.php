@@ -20,6 +20,7 @@
 <head>
     <title>Tính thuế thu nhập cá nhân</title>
 </head>
+
 <body>
     <h1>Tính thuế thu nhập cá nhân</h1>
     <form method="post" action="">
