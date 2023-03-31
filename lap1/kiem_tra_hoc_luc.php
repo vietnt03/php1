@@ -1,7 +1,7 @@
 <?php
-    $hoten = $_POST['hoten'];
-    $ngaysinh = $_POST['ngaysinh'];
-    $diem = $_POST['diem'];
+        $hoten = $_POST['hoten'];
+        $ngaysinh = $_POST['ngaysinh'];
+        $diem = $_POST['diem'];
     
     if ($diem < 5) {
         echo "Học lực của " . $hoten . " sinh ngày " . $ngaysinh . " là: Yếu";
