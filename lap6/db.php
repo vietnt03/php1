@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$dbname = "web2014";
+$dbname = "lap6";
 $username = "root";
 $password = "";
 

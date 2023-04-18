@@ -11,7 +11,7 @@ if ($_SERVER[ 'REQUEST_METHOD'] == 'POST') {
     password= '$password',fullname= '$fullname',birthday= '$birthday',email= '$email' WHERE id=$id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    header ("location: user.php");
+    header ("location: index.php");
     exit;
 }
 

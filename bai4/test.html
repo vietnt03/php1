@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="openWin()">open</button>
+    <button onclick="closeWin()">closed</button>
+    <script>
+        class Dongvat {
+            constructor(name, color, weight) {
+                this.name = name;
+                this.color = color;
+                this.weight = weight;
+            }
+            an(chuot) {
+                this.weight += chuot;
+            }
+
+            chay() {
+                console.log(this.name + " Đang chạy");
+            }
+        }
+
+        class Cat extends Dongvat {
+
+        }
+        Cat[1] = new Cat('Tom', 'den', 12);
+        Cat[2] = new Cat('Tep', 'den', 12);
+        Cat[3] = new Cat('Chém', 'den', 12);
+        Cat[4] = new Cat('TITI', 'den', 12);
+
+        for (let x in Cat) {
+            console.log(Cat[x].name);
+        }
+
+        // dv.chay();
+
+        var nwindow
+        function openWin() {
+            nwindow = open("https://vnexpress.net", "window", "width=400, height=500");
+        }
+
+        function closeWin() {
+            if (nwindow == undefined) {
+                alert("Windows chưa được mở");
+            } else if (nwindow.closed) {
+                alert("Windows đã đóng")
+            } else {
+                nwindow.close()
+            }
+        }
+
+        function Dog(name = 'long', age = 12) {
+            this.name = name;
+            this.age = age;
+            this.run = function () {
+                console.log(this.name + " đang chạy");
+            }
+        }
+        var dog = new Dog;
+        dog.name = "ĐÔNG"
+        dog.run();
+    </script>
+</body>
+
+</html>
