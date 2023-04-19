@@ -37,14 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //Nếu không có lỗi xảy ra mới thêm dữ liệu và database
     if (!isset($errors)) {
-        $sql = "INSERT INTO products(product_name, image, price, quantity, description, cate_id) 
-        VALUES('$product_name', '$image', $price, $quantity, '$description', $cate_id)";
+        $sql = "INSERT INTO products(product_name, image, price, quantity, description, cate_id) VALUES('$product_name', '$image', $price, $quantity, '$description', $cate_id)";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         //Upload ảnh
         move_uploaded_file($file['tmp_name'], 'img/' . $image);
         //THông báo thành công
-        header("location: index.php");
+        $msg = "Thêm dữ liệu thành công";
+        header("location: index.php?msg=$msg");
         die;
     }
 }

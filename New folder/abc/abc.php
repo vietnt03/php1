@@ -1,12 +1,9 @@
 <?php
-require_once "connection.php";
+require_once "db.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $product_name = $_POST['product_name'];
+    $name = $_POST['name'];
     $price = $_POST['price'];
-    $quantity = $_POST['quantity'];
-    $description = $_POST['description'];
-
     $id = $_POST['id'];
     //lấy dữ liệu file
     $file = $_FILES['image'];
@@ -14,25 +11,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image = $_POST['image'];
 
     //Validate
-    if ($product_name == "") {
+    if ($name == "") {
         $errors['name'] = "Tên sản phẩm không được trống";
     }
     if ($price < 0) {
         $errors['price'] = "Giá không được âm";
     }
-    if ($quantity < 0) {
-        $errors['quantity'] = "Số lượng không được âm";
-    }
+    
 
 
-    //Nếu không có lỗi xảy ra mới thêm dữ liệu và database
+
     if (!isset($errors)) {
-        $sql = "UPDATE products SET product_name='$product_name', image='$image', price=$price, quantity=$quantity, description='$description' WHERE id=$id";
+        $sql = "UPDATE products SET name='$name', image='$image', price=$price WHERE id=$id";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        //Upload ảnh
         move_uploaded_file($file['tmp_name'], 'img/' . $image);
-        //THông báo thành công
         $msg = "Thêm dữ liệu thành công";
         header("location: index.php?msg=$msg");
         die;
@@ -45,7 +38,7 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM products WHERE id=$id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-//Lấy 1 bản ghi
+
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -61,7 +54,7 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="">Tên sản phẩm</label>
-        <input type="text" name="product_name" value="<?= $product['product_name'] ?>">
+        <input type="text" name="name" value="<?= $product['name'] ?>">
         <span style="color:red">
             <?= $errors['name'] ?? '' ?>
         </span>
@@ -80,25 +73,11 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
             <?= $errors['image'] ?? '' ?>
         </span>
         <br>
-        <label for="">Số lượng</label>
-        <input type="number" name="quantity" value="<?= $product['quantity'] ?>">
-        <span style="color:red">
-            <?= $errors['quantity'] ?? '' ?>
-        </span>
-        <br>
-        <label for="">Mô tả</label>
-        <textarea name="description" cols="100" rows="5"><?= $product['description'] ?></textarea>
-
-        <br>
-
-      
-
-        <!--Lưu lại thông tin id cần cập nhật-->
         <input type="hidden" name="id" value="<?= $product['id'] ?>">
 
         <br>
         <button type="submit">Cập nhật</button>
     </form>
-</body>
+</body> 
 
 </html>
